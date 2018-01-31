@@ -62,6 +62,23 @@ const UNSET = undefined
  * @return {Record}
  */
 
+const cacheStats = {};
+window.cacheStats = cacheStats;
+window.printCacheSummary = () => {
+  const d2 = Object.entries(window.cacheStats).map(([k, v]) => {
+    const cost = v.computationCost / v.saves;
+    return {
+      'Function': k,
+      'Reads': v.reads,
+      'Saves': v.saves,
+      'Cache Hit %': Math.round(v.reads / (v.saves + v.reads) * 100),
+      'Time to Calculate (ms)': cost,
+      'Time Savings (ms)': Math.round(v.reads * cost),
+    }
+  })
+  console.table(d2, ['Function', 'Reads', 'Saves', 'Cache Hit %', 'Time to Calculate (ms)', 'Time Savings (ms)'])
+}
+
 function memoize(object, properties, options = {}) {
   const { takesArguments = true } = options
 
@@ -91,6 +108,8 @@ function memoize(object, properties, options = {}) {
       let cachedValue
       let keys
 
+      let statKey = `${object.object || object.constructor.name}.${property}`
+
       if (takesArguments) {
         keys = [property, ...args]
         cachedValue = getIn(this.__cache, keys)
@@ -100,12 +119,25 @@ function memoize(object, properties, options = {}) {
 
       // If we've got a result already, return it.
       if (cachedValue !== UNSET) {
+        cacheStats[statKey].reads += 1
         return cachedValue === UNDEFINED ? undefined : cachedValue
       }
 
       // Otherwise calculate what it should be once and cache it.
-      const value = original.apply(this, args)
+      const t = Date.now();
+      let value = null;
+      for (let ii = 0; ii < 10; ii++) {
+        value = original.apply(this, args)
+      }
       const v = value === undefined ? UNDEFINED : value
+
+      cacheStats[statKey] = cacheStats[statKey] || {
+        computationCost: 0,
+        saves: 0,
+        reads: 0,
+      }
+      cacheStats[statKey].computationCost += Date.now() - t
+      cacheStats[statKey].saves += 1;
 
       if (takesArguments) {
         this.__cache = setIn(this.__cache, keys, v)
