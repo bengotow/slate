@@ -1,0 +1,22 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Event handlers used by Slate plugins.
+ *
+ * @type {Array}
+ */
+
+var EVENT_HANDLERS = ['onBeforeInput', 'onBlur', 'onClick', 'onCompositionEnd', 'onCompositionStart', 'onCopy', 'onCut', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onInput', 'onFocus', 'onKeyDown', 'onKeyUp', 'onPaste', 'onSelect'];
+
+/**
+ * Export.
+ *
+ * @type {Array}
+ */
+
+exports.default = EVENT_HANDLERS;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jb25zdGFudHMvZXZlbnQtaGFuZGxlcnMuanMiXSwibmFtZXMiOlsiRVZFTlRfSEFORExFUlMiXSwibWFwcGluZ3MiOiI7Ozs7OztBQUNBOzs7Ozs7QUFNQSxJQUFNQSxpQkFBaUIsQ0FDckIsZUFEcUIsRUFFckIsUUFGcUIsRUFHckIsU0FIcUIsRUFJckIsa0JBSnFCLEVBS3JCLG9CQUxxQixFQU1yQixRQU5xQixFQU9yQixPQVBxQixFQVFyQixXQVJxQixFQVNyQixhQVRxQixFQVVyQixZQVZxQixFQVdyQixhQVhxQixFQVlyQixZQVpxQixFQWFyQixhQWJxQixFQWNyQixRQWRxQixFQWVyQixTQWZxQixFQWdCckIsU0FoQnFCLEVBaUJyQixXQWpCcUIsRUFrQnJCLFNBbEJxQixFQW1CckIsU0FuQnFCLEVBb0JyQixVQXBCcUIsQ0FBdkI7O0FBdUJBOzs7Ozs7a0JBTWVBLGMiLCJmaWxlIjoiZXZlbnQtaGFuZGxlcnMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbi8qKlxuICogRXZlbnQgaGFuZGxlcnMgdXNlZCBieSBTbGF0ZSBwbHVnaW5zLlxuICpcbiAqIEB0eXBlIHtBcnJheX1cbiAqL1xuXG5jb25zdCBFVkVOVF9IQU5ETEVSUyA9IFtcbiAgJ29uQmVmb3JlSW5wdXQnLFxuICAnb25CbHVyJyxcbiAgJ29uQ2xpY2snLFxuICAnb25Db21wb3NpdGlvbkVuZCcsXG4gICdvbkNvbXBvc2l0aW9uU3RhcnQnLFxuICAnb25Db3B5JyxcbiAgJ29uQ3V0JyxcbiAgJ29uRHJhZ0VuZCcsXG4gICdvbkRyYWdFbnRlcicsXG4gICdvbkRyYWdFeGl0JyxcbiAgJ29uRHJhZ0xlYXZlJyxcbiAgJ29uRHJhZ092ZXInLFxuICAnb25EcmFnU3RhcnQnLFxuICAnb25Ecm9wJyxcbiAgJ29uSW5wdXQnLFxuICAnb25Gb2N1cycsXG4gICdvbktleURvd24nLFxuICAnb25LZXlVcCcsXG4gICdvblBhc3RlJyxcbiAgJ29uU2VsZWN0Jyxcbl1cblxuLyoqXG4gKiBFeHBvcnQuXG4gKlxuICogQHR5cGUge0FycmF5fVxuICovXG5cbmV4cG9ydCBkZWZhdWx0IEVWRU5UX0hBTkRMRVJTXG4iXX0=

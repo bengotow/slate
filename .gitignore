@@ -2,7 +2,6 @@
 dist
 examples/build.dev.js
 examples/build.prod.js
-lib
 
 # Temporary files.
 bench/output
